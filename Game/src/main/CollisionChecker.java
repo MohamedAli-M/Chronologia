@@ -61,7 +61,7 @@ public class CollisionChecker {
     }
 
     public int checkObject(Entity entity, boolean player){
-        int index = -1;
+        int index = 999;
 
         for(int i = 0 ; i < gamePanel.obj.length ; i++){
             if(gamePanel.obj[i] != null){

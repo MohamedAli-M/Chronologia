@@ -17,6 +17,8 @@ public class Player extends Entity {
     // Only the player will have additional sprites to make it richer
     BufferedImage up3, down3, left3, right3;
 
+    int hasKey = 0;
+
     // Screen Coordinates
     public final int screenX;
     public final int screenY;
@@ -93,6 +95,7 @@ public class Player extends Entity {
 
             // Object collision detection
             int objectIndex = gamePanel.collisionChecker.checkObject(this, true);
+            pickUpObject(objectIndex);
 
             // If collision is false player can move
             if (collisionOn == false) {
@@ -130,6 +133,27 @@ public class Player extends Entity {
                     }
                 }
                 spriteCounter = 0;
+            }
+        }
+    }
+
+    public void pickUpObject(int i){
+        if(i != 999){
+            String objectName = gamePanel.obj[i].name;
+
+            switch(objectName){
+                case "Key":
+                    hasKey++;
+                    gamePanel.obj[i] = null;
+                    System.out.println("keys left : " + hasKey);
+                    break;
+                case "Door":
+                    if(hasKey > 0){
+                        gamePanel.obj[i] = null;
+                        hasKey--;
+                    }
+                    System.out.println("keys left : " + hasKey);
+                    break;
             }
         }
     }
