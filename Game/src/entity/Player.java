@@ -146,20 +146,30 @@ public class Player extends Entity {
                     gamePanel.playSFX(1);
                     hasKey++;
                     gamePanel.obj[i] = null;
-                    System.out.println("keys left : " + hasKey);
+                    gamePanel.ui.showMessage("You collected a key !");
                     break;
                 case "Door":
                     if(hasKey > 0){
                         gamePanel.playSFX(3);
                         gamePanel.obj[i] = null;
                         hasKey--;
+                        gamePanel.ui.showMessage("You opened the door !");
                     }
-                    System.out.println("keys left : " + hasKey);
+                    else {
+                        gamePanel.ui.showMessage("You need a key.");
+                    }
+
                     break;
                 case "Boots":
                     gamePanel.playSFX(2);
                     speed+=1;
                     gamePanel.obj[i] = null;
+                    gamePanel.ui.showMessage("Speed increased.");
+                    break;
+                case "Chest":
+                    gamePanel.ui.gameFinished = true;
+                    gamePanel.stopMusic();
+                    gamePanel.playSFX(4);
                     break;
             }
         }
