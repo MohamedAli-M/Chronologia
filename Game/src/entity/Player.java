@@ -87,9 +87,12 @@ public class Player extends Entity {
             }
 
 
-            // Tile collision management
+            // Tile collision detection
             collisionOn = false;
             gamePanel.collisionChecker.checkTile(this);
+
+            // Object collision detection
+            int objectIndex = gamePanel.collisionChecker.checkObject(this, true);
 
             // If collision is false player can move
             if (collisionOn == false) {
