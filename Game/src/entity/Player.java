@@ -143,16 +143,23 @@ public class Player extends Entity {
 
             switch(objectName){
                 case "Key":
+                    gamePanel.playSFX(1);
                     hasKey++;
                     gamePanel.obj[i] = null;
                     System.out.println("keys left : " + hasKey);
                     break;
                 case "Door":
                     if(hasKey > 0){
+                        gamePanel.playSFX(3);
                         gamePanel.obj[i] = null;
                         hasKey--;
                     }
                     System.out.println("keys left : " + hasKey);
+                    break;
+                case "Boots":
+                    gamePanel.playSFX(2);
+                    speed+=1;
+                    gamePanel.obj[i] = null;
                     break;
             }
         }
