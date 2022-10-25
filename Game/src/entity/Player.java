@@ -17,7 +17,7 @@ public class Player extends Entity {
     // Only the player will have additional sprites to make it richer
     BufferedImage up3, down3, left3, right3;
 
-    int hasKey = 0;
+    public int hasKey = 0;
 
     // Screen Coordinates
     public final int screenX;
