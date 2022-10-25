@@ -98,6 +98,11 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        long drawStart = 0;
+        if (keyHandler.checkDrawTime) {
+            drawStart = System.nanoTime();
+        }
+
         // Tiles draw
         tileManager.draw(g2);
 
@@ -113,7 +118,15 @@ public class GamePanel extends JPanel implements Runnable{
         // UI draw
         ui.draw(g2);
 
-//        g2.dispose();
+        if(keyHandler.checkDrawTime){
+            long drawEnd = System.nanoTime();
+            long passed = drawEnd - drawStart;
+            g2.setColor(Color.WHITE);
+            g2.drawString("Draw Time" + passed, 10, 400);
+            System.out.println("Draw Time" + passed);
+        }
+
+        g2.dispose();
     }
 
     public void playMusic(int index){
@@ -121,8 +134,7 @@ public class GamePanel extends JPanel implements Runnable{
         soundMusic.play();
         soundMusic.loop();
     }
-    public void stopMusic()
-    {
+    public void stopMusic() {
         soundMusic.stop();
     }
     public void playSFX(int i){
