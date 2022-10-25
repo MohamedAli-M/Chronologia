@@ -30,6 +30,14 @@ public class Player extends Entity {
 
         setDefaultValues();
         getPlayerImages();
+
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        solidArea.width = 32;
+        solidArea.height = 30;
     }
 
     public void setDefaultValues() {
@@ -81,6 +89,7 @@ public class Player extends Entity {
 
             // Tile collision management
             collisionOn = false;
+            gamePanel.collisionChecker.checkTile(this);
 
             // If collision is false player can move
             if (collisionOn == false) {
