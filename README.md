@@ -3,7 +3,7 @@
 
 Welcome to my 2d game, Chronologia ! 
 
-![](https://github.com/MohamedAli-M/Chronologia/blob/main/Game/Chronologia_Demo.mp4)
+https://user-images.githubusercontent.com/60142184/197934082-97593814-f554-4910-994b-61e2960bade4.mp4
 
 Features : 
 - Single thread game running in Java 
